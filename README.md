@@ -11,6 +11,7 @@ For now only grayscale images are supported.
 
 #### image.scale
 
+THE IMPLEMENTATION IS DIFFERENT FROM image.scale !
 in the following modes:
 
 * bilinear
