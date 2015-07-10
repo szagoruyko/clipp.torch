@@ -216,7 +216,7 @@ function clipp.scale(...)
    end
   mode = mode or 'bilinear'
   src = src:nDimension() == 3 and src or src:view(src:size(1),src:size(2),1)
-  dst:resize(height,width,1)
+  dst:resize(height,width,src:size(3))
   local a = clipp.createImage(src)
   local b = clipp.createImage(dst)
   errcheck('ocipResize', a[0], b[0], scale_modes[mode], ffi.new('ocipBool',0))
