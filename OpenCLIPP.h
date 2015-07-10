@@ -26,7 +26,7 @@
 
 #ifdef __APPLE__
 #include <OpenCL/opencl.h>
-#elif
+#else
 #include <CL/opencl.h>
 #endif
 

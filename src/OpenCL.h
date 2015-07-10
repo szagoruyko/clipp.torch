@@ -35,7 +35,7 @@
 #define CL_USE_DEPRECATED_OPENCL_2_0_APIS
 #ifdef __APPLE__
 #include <OpenCL/opencl.h>
-#elif
+#else
 #include <CL/opencl.h>
 #endif
 #undef CL_VERSION_1_2
@@ -47,7 +47,7 @@
 // Include C++ interface of OpenCL
 #ifdef __APPLE__
 #include <OpenCL/cl.hpp>
-#elif
+#else
 #include <CL/cl.hpp>
 #endif
 
