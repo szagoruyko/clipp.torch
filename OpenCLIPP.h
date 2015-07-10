@@ -24,7 +24,11 @@
 
 #define CL_USE_DEPRECATED_OPENCL_2_0_APIS
 
+#ifdef __APPLE__
+#include <OpenCL/opencl.h>
+#elif
 #include <CL/opencl.h>
+#endif
 
 // Definition of ocip_API - used by Microsoft compiler to generate a DLL
 #ifdef _MSC_VER
