@@ -216,6 +216,7 @@ function clipp.scale(...)
    end
   mode = mode or 'bilinear'
   src = src:nDimension() == 3 and src or src:view(src:size(1),src:size(2),1)
+  assert(src:size(3) == 4)
   dst:resize(height,width,src:size(3))
   local a = clipp.createImage(src)
   local b = clipp.createImage(dst)
