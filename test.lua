@@ -1,4 +1,4 @@
-dofile 'init.lua'
+require 'clipp'
 require 'image'
 
 local context = clipp.createContext'Intel'
@@ -36,7 +36,23 @@ function clipptest.scale_rgb()
   end
 end
 
---function clipptest.flip
+function clipptest.flip_grayscale()
+  local im = image.lena():mean(1):float():squeeze()
+  for i,mode in ipairs{'hflip','vflip'} do
+    local ref = image[mode](im)
+    local com = clipp[mode](im)
+    mytester:asserteq(torch.abs(ref - com):max(), 0, 'flip')
+  end
+end
+
+function clipptest.flip_rgb()
+  local im = image.lena():float()
+  for i,mode in ipairs{'hflip','vflip'} do
+    local ref = image[mode](im)
+    local com = clipp.to3HW(clipp[mode](clipp.toHW4(im)))
+    mytester:asserteq(torch.abs(ref - com):max(), 0, 'flip')
+  end
+end
 
 mytester:add(clipptest)
 mytester:run()

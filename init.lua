@@ -44,6 +44,16 @@ function clipp.to3HW(t)
   return t:permute(3,1,2):narrow(1,1,3)
 end
 
+local function inputcheck(t)
+  assert(t:isContiguous())
+  if t:nDimension() == 3 then
+    assert(t:size(3) == 4 or t:size(3) == 1)
+  else
+    t = t:view(t:size(1), t:size(2), 1)
+  end
+  return t
+end
+
 local supported_types = {
   {ttype = 'torch.CharTensor', stype = 'S8', ctype = 'char'},
   {ttype = 'torch.ByteTensor', stype = 'U8', ctype = 'unsigned char'},
@@ -54,6 +64,7 @@ local supported_types = {
 }
 
 function clipp.createImage(tensor)
+  inputcheck(tensor)
   local im = ffi.new'ocipImage[1]'
   local simage = ffi.new'struct SImage'
   simage.Height = tensor:size(1)
@@ -229,8 +240,7 @@ function clipp.scale(...)
       end
    end
   mode = mode or 'bilinear'
-  src = src:nDimension() == 3 and src or src:view(src:size(1),src:size(2),1)
-  assert(src:size(3) == 4 or src:size(3) == 1)
+  src = inputcheck(src)
   dst:resize(height,width,src:size(3))
   local a = clipp.createImage(src)
   local b = clipp.createImage(dst)
@@ -239,4 +249,33 @@ function clipp.scale(...)
   return dst:squeeze()
 end
 
+local transforms = {
+  'ocipMirrorX',
+  'ocipMirrorY',
+  'ocipFlip',
+  'ocipTranspose',
+}
 
+for i,ocip_name in ipairs(transforms) do
+  local name = ocip_name:gsub('ocip','')
+
+  clipp[name] = function(...)
+    local src, dst
+    local arg = {...}
+    if #arg == 1 then
+      src = inputcheck(arg[1])
+      dst = src:clone()
+    elseif #arg == 3 then
+      src = inputcheck(arg[1])
+      dst = inputcheck(arg[2])
+    end
+    local a = clipp.createImage(src)
+    local b = clipp.createImage(dst)
+    errcheck(ocip_name, a[0], b[0])
+    errcheck('ocipReadImage',b[0])
+    return dst:squeeze()
+  end
+end
+
+clipp.hflip = clipp.MirrorX
+clipp.vflip = clipp.MirrorY
