@@ -5,7 +5,20 @@ Torch interface to OpenCLIPP
 
 The goal of this package is bring to Torch [OpenCLIPP](https://github.com/CRVI/OpenCLIPP) image processing library with capabilities of running on CPU and GPU.
 
-For now only grayscale images are supported.
+Accepted formats:
+
+* HW
+* HW1
+* HW4
+
+Accepted tensors:
+
+* torch.CharTensor
+* torch.ByteTensor
+* torch.ShortTensor
+* torch.IntTensor
+* torch.FloatTensor
+* torch.DoubleTensor
 
 ### Supported transformations
 
