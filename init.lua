@@ -30,6 +30,18 @@ function clipp.getDeviceName()
   return ffi.string(name)
 end
 
+-- helper functions
+function clipp.toHW4(t)
+  assert(t:nDimension() == 3 and t:size(1) == 3)
+  return torch.cat(t, t.new(1,t:size(2),t:size(3)),1):permute(2,3,1):contiguous()
+end
+
+-- helper functions
+function clipp.to3HW(t)
+  assert(t:nDimension() == 3 and t:size(3) == 4)
+  return t:permute(3,1,2):narrow(1,1,3)
+end
+
 local supported_types = {
   {ttype = 'torch.CharTensor', stype = 'S8', ctype = 'char'},
   {ttype = 'torch.ByteTensor', stype = 'U8', ctype = 'unsigned char'},

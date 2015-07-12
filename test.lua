@@ -1,9 +1,10 @@
 dofile 'init.lua'
 require 'image'
 
-local context = clipp.createContext'NVIDIA'
+local context = clipp.createContext'Intel'
 print(clipp.getDeviceName())
 clipp.PrepareTransform'float'
+clipp.PrepareFilters'float'
 
 local mytester = torch.Tester()
 local precision = 1e-3
@@ -16,8 +17,8 @@ function clipptest.scale_grayscale()
   local h = math.random(100,1000)
 
   for i,mode in ipairs{'simple','bilinear'} do
-    ref = image.scale(im,w,h,mode)
-    com = clipp.scale(im,w,h,mode)
+    local ref = image.scale(im,w,h,mode)
+    local com = clipp.scale(im,w,h,mode)
     mytester:assertlt(torch.abs(ref - com):mean(), 1e-1, 'bilinear resize')
   end
 end
@@ -29,8 +30,8 @@ function clipptest.scale_rgb()
   local h = math.random(100,1000)
 
   for i,mode in ipairs{'simple','bilinear'} do
-    ref = image.scale(im,w,h,mode)
-    com = clipp.scale(im:permute(2,3,1):contiguous(),w,h,mode):permute(3,1,2)
+    local ref = image.scale(im,w,h,mode)
+    local com = clipp.to3HW(clipp.scale(clipp.toHW4(im),w,h,mode))
     mytester:assertlt(torch.abs(ref - com):mean(), 1e-1, 'bilinear resize')
   end
 end
