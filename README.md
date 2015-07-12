@@ -112,166 +112,187 @@ ocipError ocip_API ocipLaplace(      ocipImage Source, ocipImage Dest, int Width
 ```
 ### Table of supported functions
 
-| function name | status |
-| - | - |
-| ocipInitialize | done |
-| ocipUninitialize | done |
-| ocipChangeContext |  |
-| ocipSetCLFilesPath | done |
-| ocipGetErrorName | done |
-| ocipGetDeviceName | done |
-| ocipFinish |  |
-| ocipCreateImage | done |
-| ocipSendImage | done |
-| ocipReadImage | done |
-| ocipReleaseImage |  |
-| ocipReleaseProgram |  |
-| - | - |
-|  ocipPrepareConversion | done |
-|  ocipConvert |  |
-|  ocipScale |  |
-|  ocipScale2 |  |
-|  ocipCopy |  |
-|  ocipToGray |  |
-|  ocipSelectChannel |  |
-|  ocipToColor |  |
-| - | - |
-|  ocipPrepareArithmetic | done |
-|  ocipAdd |  |
-|  ocipAddSquare |  |
-|  ocipSub |  |
-|  ocipAbsDiff |  |
-|  ocipMul |  |
-|  ocipDiv |  |
-|  ocipImgMin |  |
-|  ocipImgMax |  |
-|  ocipImgMean |  |
-|  ocipCombine |  |
-|  ocipAddC |  |
-|  ocipSubC |  |
-|  ocipAbsDiffC |  |
-|  ocipMulC |  |
-|  ocipDivC |  |
-|  ocipRevDivC |  |
-|  ocipMinC |  |
-|  ocipMaxC |  |
-|  ocipMeanC |  |
-|  ocipAbs |  |
-|  ocipInvert |  |
-|  ocipSqr |  |
-|  ocipExp |  |
-|  ocipLog |  |
-|  ocipSqrt |  |
-|  ocipSin |  |
-|  ocipCos |  |
-| ---------------- | - |
-|  ocipPrepareLogic | done |
-|  ocipAnd |  |
-|  ocipOr |  |
-|  ocipXor |  |
-|  ocipAndC |  |
-|  ocipOrC |  |
-|  ocipXorC |  |
-|  ocipNot |  |
-| ---------------- | - |
-|  ocipPrepareLUT | done |
-|  ocipLut |  |
-|  ocipLutLinear |  |
-|  ocipBasicLut |  |
-|  ocipLutScale |  |
-| ---------------- | - |
-|  ocipPrepareMorphology | done |
-|  ocipErode |  |
-|  ocipDilate |  |
-|  ocipGradient |  |
-|  ocipErode2 |  |
-|  ocipDilate2 |  |
-|  ocipOpen |  |
-|  ocipClose |  |
-|  ocipTopHat |  |
-|  ocipBlackHat |  |
-| ---------------- | - |
-|  ocipPrepareTransform | done |
-|  ocipMirrorX | done |
-|  ocipMirrorY | done |
-|  ocipFlip | done |
-|  ocipTranspose | done |
-|  ocipRotate | done |
-|  ocipResize | done |
-|  ocipShear |  |
-|  ocipRemap |  |
-|  ocipSet |  |
-| ---------------- | - |
-|  ocipPrepareFilters | done |
-|  ocipGaussianBlur | done |
-|  ocipGauss | done |
-|  ocipSharpen | done |
-|  ocipSmooth | done |
-|  ocipMedian | done |
-|  ocipSobelVert | done |
-|  ocipSobelHoriz | done |
-|  ocipSobelCross | done |
-|  ocipSobel | done |
-|  ocipPrewittVert | done |
-|  ocipPrewittHoriz | done |
-|  ocipPrewitt | done |
-|  ocipScharrVert | done |
-|  ocipScharrHoriz | done |
-|  ocipScharr | done |
-|  ocipHipass | done |
-|  ocipLaplace | done |
-| ---------------- | - |
-|  ocipPrepareHistogram | done |
-|  ocipHistogram_1C |  |
-|  ocipHistogram_4C |  |
-|  ocipOtsuThreshold |  |
-| ---------------- | - |
-|  ocipPrepareStatistics | done |
-|  ocipMin |  |
-|  ocipMax |  |
-|  ocipMinAbs |  |
-|  ocipMaxAbs |  |
-|  ocipSum |  |
-|  ocipSumSqr |  |
-|  ocipMean |  |
-|  ocipMeanSqr |  |
-|  ocipStdDev |  |
-|  ocipMean_StdDev |  |
-|  ocipCountNonZero |  |
-|  ocipMinIndx |  |
-|  ocipMaxIndx |  |
-|  ocipMinAbsIndx |  |
-|  ocipMaxAbsIndx |  |
-| ---------------- | - |
-|  ocipPrepareThresholding | done |
-|  ocipThreshold |  |
-|  ocipThresholdGTLT |  |
-|  ocipThreshold_Img |  |
-|  ocipCompare |  |
-|  ocipCompareC |  |
-| ---------------- | - |
-|  ocipPrepareBlob | done |
-|  ocipComputeLabels |  |
-|  ocipRenameLabels |  |
-| ---------------- | - |
-|  ocipPrepareFFT |  |
-|  ocipIsFFTAvailable |  |
-|  ocipFFTForward |  |
-|  ocipFFTInverse |  |
-| ---------------- | - |
-|  ocipPrepareIntegral | done |
-|  ocipIntegral |  |
-|  ocipSqrIntegral |  |
-| ---------------- | - |
-|  ocipPrepareProximity | done |
-|  ocipSqrDistance_Norm |  |
-|  ocipSqrDistance |  |
-|  ocipAbsDistance |  |
-|  ocipCrossCorr |  |
-|  ocipCrossCorr_Norm |  |
-| ---------------- | - |
-|  ocipPrepareImageProximityFFT | done |
-|  ocipSqrDistanceFFT |  |
-|  ocipSqrDistanceFFT_Norm |  |
-|  ocipCrossCorrFFT |  |
-|  ocipCrossCorrFFT_Norm |  |
+<table>
+
+<tr><td>Component name<td>Status<td>Function<td></tr>
+
+<tr><td>Misc<td>Done<td><pre>
+ocipInitialize
+ocipUninitialize
+ocipChangeContext
+ocipSetCLFilesPath
+ocipGetErrorName
+ocipGetDeviceName
+ocipFinish
+ocipCreateImage done
+ocipSendImage done
+ocipReadImage done
+ocipReleaseImage
+ocipReleaseProgram
+</pre><td></tr>
+
+<tr><td>Conversions<td><td><pre>
+ocipConvert
+ocipScale
+ocipScale2
+ocipCopy
+ocipToGray
+ocipSelectChannel
+ocipToColor
+</pre><td></tr>
+
+<tr><td>Arithmetics<td><td><pre>
+ocipPrepareArithmetic done
+ocipAdd
+ocipAddSquare
+ocipSub
+ocipAbsDiff
+ocipMul
+ocipDiv
+ocipImgMin
+ocipImgMax
+ocipImgMean
+ocipCombine
+ocipAddC
+ocipSubC
+ocipAbsDiffC
+ocipMulC
+ocipDivC
+ocipRevDivC
+ocipMinC
+ocipMaxC
+ocipMeanC
+ocipAbs
+ocipInvert
+ocipSqr
+ocipExp
+ocipLog
+ocipSqrt
+ocipSin
+ocipCos
+</pre><td></tr>
+
+<tr><td>Logic<td><td><pre>
+ocipAnd
+ocipOr
+ocipXor
+ocipAndC
+ocipOrC
+ocipXorC
+ocipNot
+</pre><td></tr>
+
+<tr><td>LUT<td><td><pre>
+ocipLut
+ocipLutLinear
+ocipBasicLut
+ocipLutScale
+</pre><td></tr>
+
+<tr><td>Morphology<td><td><pre>
+ocipErode
+ocipDilate
+ocipGradient
+ocipErode2
+ocipDilate2
+ocipOpen
+ocipClose
+ocipTopHat
+ocipBlackHat
+</pre><td></tr>
+
+<tr><td>Transformations<td>Done<td><pre>
+ocipMirrorX
+ocipMirrorY
+ocipFlip
+ocipTranspose
+ocipRotate
+ocipResize
+ocipShear
+ocipRemap
+ocipSet
+</pre><td></tr>
+
+<tr><td>Filters<td>Done<td><pre>
+ocipGaussianBlur
+ocipGauss
+ocipSharpen
+ocipSmooth
+ocipMedian
+ocipSobelVert
+ocipSobelHoriz
+ocipSobelCross
+ocipSobel
+ocipPrewittVert
+ocipPrewittHoriz
+ocipPrewitt
+ocipScharrVert
+ocipScharrHoriz
+ocipScharr
+ocipHipass
+ocipLaplace
+</pre><td></tr>
+
+<tr><td>Histogram<td><td><pre>
+ocipHistogram_1C
+ocipHistogram_4C
+ocipOtsuThreshold
+</pre><td></tr>
+
+<tr><td>Statistics<td><td><pre>
+ocipMin
+ocipMax
+ocipMinAbs
+ocipMaxAbs
+ocipSum
+ocipSumSqr
+ocipMean
+ocipMeanSqr
+ocipStdDev
+ocipMean_StdDev
+ocipCountNonZero
+ocipMinIndx
+ocipMaxIndx
+ocipMinAbsIndx
+ocipMaxAbsIndx
+</pre><td></tr>
+
+<tr><td>Thresholding<td><td><pre>
+ocipThreshold
+ocipThresholdGTLT
+ocipThreshold_Img
+ocipCompare
+ocipCompareC
+</pre><td></tr>
+
+<tr><td>Blob<td><td><pre>
+ocipComputeLabels
+ocipRenameLabels
+</pre><td></tr>
+
+<tr><td>FFT<td><td><pre>
+ocipIsFFTAvailable
+ocipFFTForward
+ocipFFTInverse
+</pre><td></tr>
+
+<tr><td>Integral<td><td><pre>
+ocipIntegral
+ocipSqrIntegral
+</pre><td></tr>
+
+<tr><td>Proximity<td><td><pre>
+ocipSqrDistance_Norm
+ocipSqrDistance
+ocipAbsDistance
+ocipCrossCorr
+ocipCrossCorr_Norm
+</pre><td></tr>
+
+<tr><td>ImageProximityFFT<td><td><pre>
+ocipSqrDistanceFFT
+ocipSqrDistanceFFT_Norm
+ocipCrossCorrFFT
+ocipCrossCorrFFT_Norm
+</pre><td></tr>
+</table>
