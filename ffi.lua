@@ -305,4 +305,4 @@ ocipError ocipCrossCorrFFT_Norm(ocipProgram Program, ocipImage Source, ocipImage
 
 ]]
 
-clipp.C = ffi.load './build/libOpenCLIPP.so'
+clipp.C = ffi.load(package.searchpath('libclipp', package.cpath))

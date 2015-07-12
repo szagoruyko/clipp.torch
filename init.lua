@@ -19,7 +19,9 @@ function clipp.createContext(preference, type)
   local context = ffi.new'ocipContext[1]'
   errcheck('ocipInitialize',context, preference, clC.CL_DEVICE_TYPE_ALL)
   ffi.gc(context, function(d) errcheck('ocipUninitialize', d[0]) end)
-  C.ocipSetCLFilesPath'./cl-files'
+  --local clfiles = paths.dirname(package.searchpath('clipp/init', package.path)) .. '/cl-files'
+  --print(clfiles)
+  C.ocipSetCLFilesPath('/opt/rocks/clipp.torch/cl-files')
   return context
 end
 
