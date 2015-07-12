@@ -265,7 +265,7 @@ for i,ocip_name in ipairs(transforms) do
     if #arg == 1 then
       src = inputcheck(arg[1])
       dst = src:clone()
-    elseif #arg == 3 then
+    elseif #arg == 2 then
       src = inputcheck(arg[1])
       dst = inputcheck(arg[2])
     end
@@ -279,3 +279,5 @@ end
 
 clipp.hflip = clipp.MirrorX
 clipp.vflip = clipp.MirrorY
+
+
