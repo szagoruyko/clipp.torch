@@ -84,7 +84,7 @@ for i,ocip_name in ipairs(prepares) do
   clipp[name] = function(ctype)
     for j,v in ipairs(supported_types) do
       if ctype == v.ctype then
-        local t = torch[v.ttype:sub(7,-1)](1,1,1)
+        local t = torch.Tensor(1,1,1):type(v.ttype)
         errcheck(ocip_name, clipp.createImage(t)[0])
       end
     end
