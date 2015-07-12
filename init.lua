@@ -295,29 +295,11 @@ function clipp.Rotate(...)
   end
   local a = clipp.createImage(src)
   local b = clipp.createImage(dst)
-  errcheck(ocip_name, a[0], b[0], angle, xshift, yshift, scale_modes[mode])
+  errcheck('ocipRotate', a[0], b[0], angle, xshift, yshift, scale_modes[mode])
   errcheck('ocipReadImage',b[0])
   return dst:squeeze()
 end
 
-function clipp.Rotate(...)
-  local src, dst, angle, xshift, yshift, mode
-  local arg = {...}
-  if #arg == 5 then
-    src, angle, xshift, yshift, mode = unpack(arg)
-    src = inputcheck(src)
-    dst = src:clone()
-  elseif #arg == 6 then
-    dst, src, angle, xshift, yshift, mode = unpack(arg)
-    src = inputcheck(src)
-    dst = inputcheck(dst)
-  end
-  local a = clipp.createImage(src)
-  local b = clipp.createImage(dst)
-  errcheck(ocip_name, a[0], b[0], angle, xshift, yshift, scale_modes[mode])
-  errcheck('ocipReadImage',b[0])
-  return dst:squeeze()
-end
 
 function clipp.Shear(...)
   local src, dst, shearX, shearY, XShift, YShift, mode
@@ -333,7 +315,7 @@ function clipp.Shear(...)
   end
   local a = clipp.createImage(src)
   local b = clipp.createImage(dst)
-  errcheck(ocip_name, a[0], b[0], shearX, shearY, XShift, YShift, scale_modes[mode])
+  errcheck('ocipShear', a[0], b[0], shearX, shearY, XShift, YShift, scale_modes[mode])
   errcheck('ocipReadImage',b[0])
   return dst:squeeze()
 end
@@ -354,7 +336,7 @@ function clipp.Remap(...)
   local b = clipp.createImage(dst)
   local mx = clipp.createImage(mapX)
   local my = clipp.createImage(mapY)
-  errcheck(ocip_name, a[0], b[0], mx[0], my[0], scale_modes[mode])
+  errcheck('ocipRemap', a[0], b[0], mx[0], my[0], scale_modes[mode])
   errcheck('ocipReadImage',b[0])
   return dst:squeeze()
 end
